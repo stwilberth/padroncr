@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Donde voto? Costa Rica | PadrónCR.info</title>
+  </head>
+  <body>
+    <div id="app">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <a class="navbar-brand" href="https://padroncr.info">PadrónCR.info</a>
+          </div>
+        </div><!-- /.container-fluid -->
+      </nav>
+      <div class="container">
+      <br>
+      <br>
+      <center>
+        <div class="form-inline">
+          <div class="form-group" v-show="log.form.visible">
+            <input type="number" class="form-control" placeholder="Cedula" v-model="log.datos.cedula">
+          </div>
+          <button type="button" class="btn btn-primary" @click="buscarme">{{log.form.boton}}</button>
+        </div>
+      </center>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3">
+          <div v-show="log.datos.visible">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Tu información:</h3>
+            </div>
+            <div class="panel-body">
+                <label>Nombre: </label> {{log.datos.user.nombre}} {{log.datos.user.apellido}} {{log.datos.user.apellid}} <br>
+                <label>Sexo:  </label> {{log.datos.user.sexo | sexo}}<br>
+                <label>Provincia:</label> {{log.datos.code.provincia}} <br>
+                <label>Canton:</label> {{log.datos.code.canton}} <br>
+                <label>Distrito:</label> {{log.datos.code.distrito}} <br>
+                <label>Junta:</label> No disponible
+            </div>
+          </div>
+          </div>
+          <div v-show="log.divmsj.visible">
+                <div v-bind:class="[log.divmsj.estatico, log.divmsj.estilo]" role="alert">
+                  <p>{{log.divmsj.info}}</p>
+                </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      </div>
+    </div>
+<div id="foo"></div>
+    <script src="js/spin.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/app.js"></script>
+
+  </body>
+</html>
