@@ -64,41 +64,11 @@ $('#boton').popover('show')
               thes.log.divmsj.estilo = color;
               thes.log.divmsj.info = msj;
             }
-            function espiner(onoff) {
-              if (onoff === true) {
-                  var opts = {
-                        lines: 12 // The number of lines to draw
-                      , length: 28 // The length of each line
-                      , width: 14 // The line thickness
-                      , radius: 42 // The radius of the inner circle
-                      , scale: 0.4 // Scales overall size of the spinner
-                      , corners: 1 // Corner roundness (0..1)
-                      , color: "#000" // #rgb or #rrggbb or array of colors
-                      , opacity: 0.25 // Opacity of the lines
-                      , rotate: 0 // The rotation offset
-                      , direction: 1 // 1: clockwise, -1: counterclockwise
-                      , speed: 1 // Rounds per second
-                      , trail: 60 // Afterglow percentage
-                      , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
-                      , zIndex: 2e9 // The z-index (defaults to 2000000000)
-                      , className: "spinner" // The CSS class to assign to the spinner
-                      , top: "60%" // Top position relative to parent
-                      , left: "50%" // Left position relative to parent
-                      , shadow: true // Whether to render a shadow
-                      , hwaccel: false // Whether to use hardware acceleration
-                      , position: "absolute" // Element positioning
-                  }
-                  var target = document.getElementById("foo");
-                  var spinner = new Spinner(opts).spin(target);
-                  $(target).data("spinner", spinner);
-              } else {
-                $("#foo").remove();
-              }
-            }
             function datos(cedula) {//consulta firebase
               Estado(1);
               alerta("", "azul", false)
-              espiner(true)
+
+              Form(false, 1)
               var refe = db.ref("app/datos/padron/" + cedula);
               refe.on("value", function(snapshot){
                 var snap = snapshot.val();
@@ -107,13 +77,14 @@ $('#boton').popover('show')
                     db.ref("app/datos/code/" + snap.code).on("value", function(snapshot){
                       var code = snapshot.val();
                       thes.log.datos.code = code;
-                      espiner(false);
+                      Form(false, 2)
                       thes.log.datos.visible = true;
                       Estado(2)
                     });
                   } else {
                     Estado(3)
-                    espiner(false)
+                    Form(false, 2)
+                    console.log("hola")
                     var msj = "¡No se encuentra información para este numero de cédula: " + cedula + "!"
                     alerta(msj, "rojo", true)
                   }
@@ -126,7 +97,7 @@ $('#boton').popover('show')
               thes.log.datos.code = "";
               thes.log.datos.cedula = "";
               alerta(info, "azul", true)
-              Form(true)
+              Form(true, 0)
               Estado(0)
             }
             function Verifica() { // devuelve cedula o false
@@ -147,24 +118,16 @@ $('#boton').popover('show')
                   return false
                 }
             }
-            function Form(visible) {
-              console.log(visible)
+            function Form(visible, boton) {
+              console.log(visible + " " + boton)
               thes.log.form.visible = visible;
-              var buscarme = "Buscarme";
-              var nuevabusqueda = "Nueva Búsqueda";
-              if (visible) {
-
-                thes.log.form.boton = buscarme;
-              } else {
-                thes.log.form.boton = nuevabusqueda;
-                console.log(thes.log.form.boton)
-              }
+              var btnmsj = ["Buscarme", "Cargando...", "Nueva Búsqueda"];
+              thes.log.form.boton = btnmsj[boton]
             }
             switch (estado){
               case 0://ejecutara buscando
                 var cedula = Verifica();
                 if (cedula) {//consulta datos
-                  Form(false)
                   datos(cedula)
                 }
                 console.log("case: " +0)
