@@ -17,16 +17,30 @@
         </div><!-- /.container-fluid -->
       </nav>
       <div class="container">
-      <br>
-      <br>
-      <center>
-        <div class="form-inline">
-          <div class="form-group" v-show="log.form.visible">
-            <input type="number" class="form-control" placeholder="Cedula" v-model="log.datos.cedula">
+        <div class="row">
+          <div class="col">
+            <h1 class="text-center" >¿Donde Voto?</h1>
           </div>
-          <button type="button" class="btn btn-primary" @click="buscarme">{{log.form.boton}}</button>
         </div>
-      </center>
+      <br>
+      <br>
+
+
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3">
+              <center>
+              <div class="form-inline ">
+                <div class="form-group" v-show="log.form.visible">
+                  <input type="number" class="form-control" placeholder="Cedula" v-model="log.datos.cedula">
+                </div>
+                <button type="button" class="btn btn-primary" @click="buscarme">{{log.form.boton}}</button>
+              </div>
+              </center>
+          </div>
+        </div>
+
+
       <br>
       <br>
       <div class="row">
@@ -48,7 +62,7 @@
           </div>
           <div v-show="log.divmsj.visible">
                 <div v-bind:class="[log.divmsj.estatico, log.divmsj.estilo]" role="alert">
-                  <p>{{log.divmsj.info}}</p>
+                  <p  class="text-center" >{{log.divmsj.info}}</p>
                 </div>
           </div>
         </div>
@@ -58,6 +72,16 @@
 
       </div>
     </div>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43437982-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
 <div id="foo"></div>
     <script src="js/spin.js"></script>
     <script src="js/vue.min.js"></script>

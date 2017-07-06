@@ -11,7 +11,7 @@
   var db = firebase.database();
 
 // vue__________________________________________________
-
+$('#boton').popover('show')
   var app = new Vue({
     el: "#app",
     data: {
@@ -41,7 +41,7 @@
             var thes = this;
             var estado = thes.log.estado;
             function Estado(nuevo) {
-              console.log(nuevo)
+              console.log("funcion estado " + nuevo)
               thes.log.estado = nuevo;
             }
             function alerta(msj, tipo, visible) {
@@ -71,7 +71,7 @@
                       , length: 28 // The length of each line
                       , width: 14 // The line thickness
                       , radius: 42 // The radius of the inner circle
-                      , scale: 0.5 // Scales overall size of the spinner
+                      , scale: 0.4 // Scales overall size of the spinner
                       , corners: 1 // Corner roundness (0..1)
                       , color: "#000" // #rgb or #rrggbb or array of colors
                       , opacity: 0.25 // Opacity of the lines
@@ -82,7 +82,7 @@
                       , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
                       , zIndex: 2e9 // The z-index (defaults to 2000000000)
                       , className: "spinner" // The CSS class to assign to the spinner
-                      , top: "50%" // Top position relative to parent
+                      , top: "60%" // Top position relative to parent
                       , left: "50%" // Left position relative to parent
                       , shadow: true // Whether to render a shadow
                       , hwaccel: false // Whether to use hardware acceleration
@@ -126,7 +126,7 @@
               thes.log.datos.code = "";
               thes.log.datos.cedula = "";
               alerta(info, "azul", true)
-              form(true)
+              Form(true)
               Estado(0)
             }
             function Verifica() { // devuelve cedula o false
@@ -147,35 +147,39 @@
                   return false
                 }
             }
-            function form(visible) {
+            function Form(visible) {
+              console.log(visible)
               thes.log.form.visible = visible;
               var buscarme = "Buscarme";
               var nuevabusqueda = "Nueva Búsqueda";
               if (visible) {
+
                 thes.log.form.boton = buscarme;
+              } else {
+                thes.log.form.boton = nuevabusqueda;
+                console.log(thes.log.form.boton)
               }
-              thes.log.form.boton = nuevabusqueda;
             }
             switch (estado){
               case 0://ejecutara buscando
                 var cedula = Verifica();
                 if (cedula) {//consulta datos
-                  form(false)
+                  Form(false)
                   datos(cedula)
                 }
-                console.log(0)
+                console.log("case: " +0)
               break;
               case 1://nueva busqueda, cuando se esta buscando
                 alert("¡Espere por favor!")
-                console.log(1)
+                console.log("case: " +1)
               break;
               case 2://nueva busq, elimina resp positiva y reestablece
                 disponible()
-                console.log(2)
+                console.log("case: " +2)
               break;
               case 3://nueva busq, elimina resp negativa y reestablece
                 disponible()
-                console.log(3)
+                console.log("case: " +3)
               break;
             }
       }
@@ -184,8 +188,8 @@
         sexo: function (value) {
           var respuesta;
           if (!value) respuesta = "";
-          if (value == 1) respuesta = "Masculino";
-          if (value == 2) respuesta = "Femenino";
+          if (value == 1) respuesta = "MASCULINO";
+          if (value == 2) respuesta = "FEMENENINO";
           return respuesta;
         }
       }
