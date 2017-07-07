@@ -9,7 +9,7 @@
   };
   firebase.initializeApp(config);
   var db = firebase.database();
-
+var vaca = "muuu";
 // vue__________________________________________________
 $('#boton').popover('show')
   var app = new Vue({
@@ -30,7 +30,8 @@ $('#boton').popover('show')
         },
         form: {
           visible: true,
-          boton: "Buscarme"
+          boton: "Buscarme",
+          cargando: false,
         },
         estado: 0, //0 disponible, 1 buscando, 2 respuesta-positiva, 3 respuesta-negativa
       }
@@ -67,7 +68,7 @@ $('#boton').popover('show')
             function datos(cedula) {//consulta firebase
               Estado(1);
               alerta("", "azul", false)
-
+              thes.log.form.cargando = true;
               Form(false, 1)
               var refe = db.ref("app/datos/padron/" + cedula);
               refe.on("value", function(snapshot){
@@ -78,10 +79,12 @@ $('#boton').popover('show')
                       var code = snapshot.val();
                       thes.log.datos.code = code;
                       Form(false, 2)
+                      thes.log.form.cargando = false;
                       thes.log.datos.visible = true;
                       Estado(2)
                     });
                   } else {
+                    thes.log.form.cargando = false;
                     Estado(3)
                     Form(false, 2)
                     console.log("hola")
