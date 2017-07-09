@@ -9,9 +9,13 @@
   };
   firebase.initializeApp(config);
   var db = firebase.database();
-var vaca = "muuu";
+
+  function lg(dato) {
+    console.log(dato)
+  }
+
 // vue__________________________________________________
-$('#boton').popover('show')
+
   var app = new Vue({
     el: "#app",
     data: {
@@ -33,16 +37,21 @@ $('#boton').popover('show')
           boton: "Buscarme",
           cargando: false,
         },
+        mapa: {
+          lugar: "Costa Rica",
+          mapa: "",
+          geocoder: "",
+        },
         estado: 0, //0 disponible, 1 buscando, 2 respuesta-positiva, 3 respuesta-negativa
       }
     },
     methods: {
-          buscarme: function () {
-            console.log("click")
+      buscarme: function () {
+
+            lg("click buscarme")
             var thes = this;
             var estado = thes.log.estado;
             function Estado(nuevo) {
-              console.log("funcion estado " + nuevo)
               thes.log.estado = nuevo;
             }
             function alerta(msj, tipo, visible) {
@@ -77,11 +86,21 @@ $('#boton').popover('show')
                     thes.log.datos.user = snap;
                     db.ref("app/datos/code/" + snap.code).on("value", function(snapshot){
                       var code = snapshot.val();
+                      console.log(code)
                       thes.log.datos.code = code;
+                      var canton;
+                      if (code.canton === "CENTRAL") {
+                        canton = code.provincia;
+                      } else {
+                        canton = code.canton;
+                      }
+                      thes.log.mapa.lugar = code.distrito + ", " + canton + ", " + code.provincia;
+                      console.log(thes.log.mapa.lugar)
                       Form(false, 2)
                       thes.log.form.cargando = false;
                       thes.log.datos.visible = true;
                       Estado(2)
+                      app.geocodeAddress(thes.log.mapa.geocoder, thes.log.mapa.mapa);
                     });
                   } else {
                     thes.log.form.cargando = false;
@@ -133,21 +152,42 @@ $('#boton').popover('show')
                 if (cedula) {//consulta datos
                   datos(cedula)
                 }
-                console.log("case: " +0)
               break;
               case 1://nueva busqueda, cuando se esta buscando
                 alert("¡Espere por favor!")
-                console.log("case: " +1)
               break;
               case 2://nueva busq, elimina resp positiva y reestablece
                 disponible()
-                console.log("case: " +2)
               break;
               case 3://nueva busq, elimina resp negativa y reestablece
                 disponible()
-                console.log("case: " +3)
               break;
             }
+      },
+      mapa: function () {
+        var thes = this;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: 9.93774, lng: -84.041977}
+        });
+        thes.log.mapa.mapa = map;
+        var geocoder = new google.maps.Geocoder();
+        thes.log.mapa.geocoder = geocoder;
+      },
+      geocodeAddress: function (geocoder, resultsMap) {
+        var thes = this;
+        var address = thes.log.mapa.lugar;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('No se encontró resultados en Google Maps: ' + status);
+          }
+        });
       }
     },
     filters: {

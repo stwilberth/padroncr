@@ -1,36 +1,36 @@
-[debug] [2017-07-07T08:30:08.810Z] ----------------------------------------------------------------------
-[debug] [2017-07-07T08:30:08.824Z] Command:      /usr/bin/nodejs /usr/bin/firebase serve
-[debug] [2017-07-07T08:30:08.826Z] CLI Version:  3.9.1
-[debug] [2017-07-07T08:30:08.826Z] Platform:     linux
-[debug] [2017-07-07T08:30:08.827Z] Node Version: v7.10.0
-[debug] [2017-07-07T08:30:08.827Z] Time:         Fri Jul 07 2017 02:30:08 GMT-0600 (CST)
-[debug] [2017-07-07T08:30:08.827Z] ----------------------------------------------------------------------
+[debug] [2017-07-09T15:51:59.218Z] ----------------------------------------------------------------------
+[debug] [2017-07-09T15:51:59.232Z] Command:      /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2017-07-09T15:51:59.234Z] CLI Version:  3.9.1
+[debug] [2017-07-09T15:51:59.234Z] Platform:     linux
+[debug] [2017-07-09T15:51:59.234Z] Node Version: v7.10.0
+[debug] [2017-07-09T15:51:59.235Z] Time:         Sun Jul 09 2017 09:51:59 GMT-0600 (CST)
+[debug] [2017-07-09T15:51:59.235Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-07-07T08:30:08.900Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-07-07T08:30:08.901Z] > authorizing via signed-in user
-[debug] [2017-07-07T08:30:08.913Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2017-07-07T08:30:08.915Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/4y8a-vye9U4luEu2o7gXFQ2e_2dct54EwJthXIRC8rtBUdYIqpC1MOMV-An3_d5Z',
+[debug] [2017-07-09T15:51:59.358Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-07-09T15:51:59.359Z] > authorizing via signed-in user
+[debug] [2017-07-09T15:51:59.370Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-07-09T15:51:59.372Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/4y8a-vye9U4luEu2o7gXFQ2e_2dct54EwJthXIRC8rtBUdYIqpC1MOMV-An3_d5Z',
   client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
   client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
   grant_type: 'refresh_token',
   scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Jul 07 2017 02:30:08 GMT-0600 (CST)
-[debug] [2017-07-07T08:30:09.560Z] <<< HTTP RESPONSE 200
-[debug] [2017-07-07T08:30:09.616Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/padron-79f32  
- Fri Jul 07 2017 02:30:09 GMT-0600 (CST)
-[debug] [2017-07-07T08:30:10.589Z] <<< HTTP RESPONSE 200
-[debug] [2017-07-07T08:30:10.594Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/padron-79f32/tokens  
- Fri Jul 07 2017 02:30:10 GMT-0600 (CST)
-[debug] [2017-07-07T08:30:11.123Z] <<< HTTP RESPONSE 200
+ Sun Jul 09 2017 09:51:59 GMT-0600 (CST)
+[debug] [2017-07-09T15:51:59.892Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-09T15:51:59.955Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/padron-79f32  
+ Sun Jul 09 2017 09:51:59 GMT-0600 (CST)
+[debug] [2017-07-09T15:52:01.888Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-09T15:52:01.895Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/padron-79f32/tokens  
+ Sun Jul 09 2017 09:52:01 GMT-0600 (CST)
+[debug] [2017-07-09T15:52:02.453Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/home/wilberth/Documentos/firebase/padron'...
 [info] 
-[debug] [2017-07-07T08:30:11.137Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/padron-79f32  
- Fri Jul 07 2017 02:30:11 GMT-0600 (CST)
-[debug] [2017-07-07T08:30:11.855Z] <<< HTTP RESPONSE 200
-[debug] [2017-07-07T08:30:11.858Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/859813990886/clients/_:getWebAppConfig  
- Fri Jul 07 2017 02:30:11 GMT-0600 (CST)
-[debug] [2017-07-07T08:30:12.707Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-09T15:52:02.473Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/padron-79f32  
+ Sun Jul 09 2017 09:52:02 GMT-0600 (CST)
+[debug] [2017-07-09T15:52:03.027Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-09T15:52:03.029Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/859813990886/clients/_:getWebAppConfig  
+ Sun Jul 09 2017 09:52:03 GMT-0600 (CST)
+[debug] [2017-07-09T15:52:03.872Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
 
