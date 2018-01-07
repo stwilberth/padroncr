@@ -99,6 +99,8 @@
                       Form(false, 2)
                       thes.log.form.cargando = false;
                       thes.log.datos.visible = true;
+                      
+                      
                       Estado(2)
                       app.geocodeAddress(thes.log.mapa.geocoder, thes.log.mapa.mapa);
                     });
@@ -195,7 +197,7 @@
           var respuesta;
           if (!value) respuesta = "";
           if (value == 1) respuesta = "MASCULINO";
-          if (value == 2) respuesta = "FEMENENINO";
+          if (value == 2) respuesta = "FEMENINO";
           return respuesta;
         }
       }
